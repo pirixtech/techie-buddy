@@ -1,14 +1,16 @@
 {
   "name": "techie-buddy",
   "version": "1.0.0",
-  "description": "Techie developer's best buddy to help your health and well being",
+  "description": "Developer's best buddy to care your health and well being",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pirixtech/techie-buddy.git"
+    "url": "git+https://github.co m/pirixtech/techie-buddy.git"
   },
   "keywords": [
     "alexa",
@@ -23,6 +25,9 @@
   "homepage": "https://github.com/pirixtech/techie-buddy#readme",
   "dependencies": {
     "ask-sdk-core": "^2.9.0",
-    "ask-sdk-model": "^1.29.0"
+    "ask-sdk-model": "^1.29.0",
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "oas3-tools": "^2.0.2"
   }
 }

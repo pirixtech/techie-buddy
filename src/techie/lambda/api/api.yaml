@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  title: Health API
+  description: APIs to fetch excercises to ease software developers' physical pain
+    during work
+  contact:
+    email: pirix.technologies@gmail.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/Pirix-Technologies/HealthAPI/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://virtserver.swaggerhub.com/Pirix/SimpleAPI/1.0.0
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: admins
+  description: Secured Admin-only calls
+- name: developers
+  description: Operations available to regular developers
+paths:
+  /exercise:
+    get:
+      tags:
+      - developers
+      summary: exercise to release pain
+      description: |
+        By passing in the appropriate options, you can search for appropriate exercise for a particular body area
+      operationId: searchExercise
+      parameters:
+      - name: area
+        in: query
+        description: pass an required body area search string for looking up excercise
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: duration
+        in: query
+        description: number of minutes for the excercise
+        required: true
+        style: form
+        explode: true
+        schema:
+          minimum: 0
+          type: integer
+          format: int32
+      - name: limit
+        in: query
+        description: maximum number of records to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 3
+          minimum: 0
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExerciseItem'
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: Developers
+components:
+  schemas:
+    ExerciseItem:
+      required:
+      - duration
+      - exercise
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        name:
+          type: string
+          example: neck exercise
+        duration:
+          type: integer
+          format: int32
+          example: 2
+        exercise:
+          $ref: '#/components/schemas/Exercise'
+      example:
+        duration: 2
+        name: neck exercise
+        exercise:
+          name: seated neck release
+          steps: Sit on a mat in a cross-legged position. You can also sit on a chair
+            with your feet flat on the floor. Make sure to keep your spine straight.
+            Place your left palm on the top of your head and inhale. Now, slowly tilt
+            your head to the left with exhalation. Here, you also need to apply gentle
+            pressure with your palm to give a deeper stretch. Hold the position for
+            30 seconds. Now, slowly lift your head up and release your hands. Repeat
+            the same posture on the other side. You can do 4-5 sets.
+        id: d290f1ee-6c54-4b01-90e6-d701748f0851
+    Exercise:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+          example: seated neck release
+        steps:
+          type: string
+          example: Sit on a mat in a cross-legged position. You can also sit on a
+            chair with your feet flat on the floor. Make sure to keep your spine straight.
+            Place your left palm on the top of your head and inhale. Now, slowly tilt
+            your head to the left with exhalation. Here, you also need to apply gentle
+            pressure with your palm to give a deeper stretch. Hold the position for
+            30 seconds. Now, slowly lift your head up and release your hands. Repeat
+            the same posture on the other side. You can do 4-5 sets.
+      example:
+        name: seated neck release
+        steps: Sit on a mat in a cross-legged position. You can also sit on a chair
+          with your feet flat on the floor. Make sure to keep your spine straight.
+          Place your left palm on the top of your head and inhale. Now, slowly tilt
+          your head to the left with exhalation. Here, you also need to apply gentle
+          pressure with your palm to give a deeper stretch. Hold the position for
+          30 seconds. Now, slowly lift your head up and release your hands. Repeat
+          the same posture on the other side. You can do 4-5 sets.
