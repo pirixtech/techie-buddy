@@ -1,0 +1,28 @@
+{
+  "name": "techie-buddy",
+  "version": "1.0.0",
+  "description": "Techie developer's best buddy to help your health and well being",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirixtech/techie-buddy.git"
+  },
+  "keywords": [
+    "alexa",
+    "conversation",
+    "skills"
+  ],
+  "author": "Pirix Technologies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pirixtech/techie-buddy/issues"
+  },
+  "homepage": "https://github.com/pirixtech/techie-buddy#readme",
+  "dependencies": {
+    "ask-sdk-core": "^2.9.0",
+    "ask-sdk-model": "^1.29.0"
+  }
+}
