@@ -75,10 +75,10 @@ components:
   schemas:
     ExerciseItem:
       required:
-      - duration
-      - exercise
       - id
       - name
+      - duration
+      - exercise
       type: object
       properties:
         id:
