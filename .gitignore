@@ -117,3 +117,7 @@ dist
 
 # IntelliJ
 *.iml
+
+# lambda builds
+lambda.zip
+package.zip
