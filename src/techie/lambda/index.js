@@ -13,7 +13,7 @@
 'use strict';
 
 const Alexa = require('ask-sdk-core');
-const util = require('./utils/utils');
+const util = require('./utils');
 const exerciseClient = require('./exercise-client');
 const { v4: uuidv4 } = require('uuid');
 
