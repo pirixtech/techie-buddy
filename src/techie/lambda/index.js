@@ -20,7 +20,8 @@ const { v4: uuidv4 } = require('uuid');
 // API handler to get and return exercise routine
 const GetExerciseApiHandler = {
     canHandle(handlerInput) {
-        return util.isApiRequest(handlerInput, 'GetExerciseApi');
+//        return util.isApiRequest(handlerInput, 'GetExerciseApi');
+        return true;
     },
     handle(handlerInput) {
         const uuid = uuidv4();
@@ -97,7 +98,7 @@ const ErrorHandler = {
 const LogRequestInterceptor = {
     process(handlerInput) {
         console.log(`REQUEST ENVELOPE = ${JSON.stringify(handlerInput.requestEnvelope)}`);
-        console.log(`handler input object = JSON.stringify(handlerInput)`);
+        console.log(`handler input object = ${JSON.stringify(handlerInput)}`);
     },
 };
 
