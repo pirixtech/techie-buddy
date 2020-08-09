@@ -1,0 +1,653 @@
+{
+  "techie-buddy": [
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "1"
+          },
+          "body_area": {
+            "S": "chest"
+          },
+          "name": {
+            "S": "Figure-Four Stretch"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Stand facing a corner of a room. With your arms at your sides and elbows bent at about shoulder height, press one palm into each wall while staggering your feet behind you."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Slowly lean inward, pressing your chest towards the wall until youfeel a stretch in your chest."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "60"
+                  },
+                  "routine": {
+                    "S": "Hold without allowing your forearms or hands to move."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "2"
+          },
+          "body_area": {
+            "S": "glutes"
+          },
+          "name": {
+            "S": "Glute Bridge"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Lie on your back with your knees bent and feet as close to your pelvis as possible."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Press down through your heels and lift your pelvis off the floor."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Continue lifting until your body makes a straight line from your shoulders to your knees (your shoulders should still be on the floor). Keep your knees in line with your feet."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "4"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Hold at the top before lowering back down."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "3"
+          },
+          "body_area": {
+            "S": "piriformis"
+          },
+          "name": {
+            "S": "Figure-Four Stretch"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Lie on your back with knees bent and feet pressed into the ground."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Cross your left ankle over your right knee, and then reach your hands around your right thigh."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Pull your right thigh towards you (keeping your upper body on the floor). Hold, then repeat on the other side."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "4"
+          },
+          "body_area": {
+            "S": "spinal flexors"
+          },
+          "name": {
+            "S": "Seated Stretch"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Sit with legs extended straight in front of you."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Cross your right leg over your left, planting your right foot outside your left knee."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Twist to the right, placing your left elbow outside your right knee, and look over your shoulder. Hold, then repeat on other side."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "5"
+          },
+          "body_area": {
+            "S": "hamstrings"
+          },
+          "name": {
+            "S": "Straight-Leg Pull"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Lie on your back with both legs flat against the ground."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Lift your right leg up off the ground, placing your hands behind your right thigh."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Keeping your right leg straight, pull it towards your chest as far as you can. Hold, then repeat on other side."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "6"
+          },
+          "body_area": {
+            "S": "glutes"
+          },
+          "name": {
+            "S": "Bent-Leg Pull"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Lie on your back with your left leg bent and your right leg straight up in the air."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Loop a band around the sole of your right foot."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Keeping your left foot planted firmly on the mat, pull your right leg in towards your chest. Hold, then repeat on other side."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "7"
+          },
+          "body_area": {
+            "S": "hip"
+          },
+          "name": {
+            "S": "Pancake Stretch"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Sit on the ground with your legs straight and in the shape of the letter “V.”"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Hinge forward at the hips and reach your torso towards your toes, getting your upper body as close to the floor as possible between your outstretched legs. Hold, and then walk your arms back toward your body to sit back up."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "8"
+          },
+          "body_area": {
+            "S": "calves"
+          },
+          "name": {
+            "S": "Calf Stretch Against Wall"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Standing near a wall, place the toes of your right foot on the base of the wall."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Lean in towards the wall, feeling the stretch in your calf.  Make sure not to bend your back leg—only go as far as you can while keeping it straight."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Hold, then repeat on other side."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "9"
+          },
+          "body_area": {
+            "S": "neck"
+          },
+          "name": {
+            "S": "Lateral Neck Flexion"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Stand with your feet hip-width apart, toes pointing forward or turned slightly outwards, with arms by your sides. Stiffen your abdominal muscles (“brace”) to stabilize your spine, then depress and retract your scapulae (pull shoulders down and back) without arching your low back."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Slowly draw your right ear toward your right shoulder stopping when you feel the stretch.  Be sure to maintain body alignment keeping your shoulders down and back. Hold the stretch for 5-10 seconds.  Slowly return to starting position.  Repeat on the left side.  Perform a total of 2-4 repetitions."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Increase the stretch by brining your hand to the top of your head and gently applying a light pressure with your fingertips."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "To stretch the sternocleidomastoid, after laterally flexing the neck, slowly lift you chin upwards."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exercise_id": {
+            "S": "10"
+          },
+          "body_area": {
+            "S": "neck"
+          },
+          "name": {
+            "S": "Neck Flexion and Extension"
+          },
+          "duration": {
+            "N": "120"
+          },
+          "exercise": {
+            "L": [
+              {
+                "M": {
+                  "step": {
+                    "N": "1"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Stand with your feet hip-width apart, toes pointing forward or turned slightly outwards, with arms by your sides. Stiffen your abdominal muscles (“brace”) to stabilize your spine, then depress and retract your scapulae (pull shoulders down and back) without arching your low back."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "2"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Slowly drop your chin toward your chest (neck flexion), think of making a 'double-chin' by pressing your chin directly into your neck.    Hold for 15-30 seconds and return to starting positon."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "Slowly bring the base of your skull toward your back (neck extension), brining your chip up toward the ceiling.  Make sure to keep your shoulder relaxed, down and back.  Hold for 5-10 seconds and return to starting position."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "3"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "To increase the stretch during flexion, bring one hand behind your head and place your fingertips right above the base of the skull.  Apply light pressure."
+                  }
+                }
+              },
+              {
+                "M": {
+                  "step": {
+                    "N": "4"
+                  },
+                  "length": {
+                    "N": "30"
+                  },
+                  "routine": {
+                    "S": "To increase the stretch during extension, bring one hand up to your forehead, placing only one or two fingers fingers on your forehead to apply a light pressure."
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
