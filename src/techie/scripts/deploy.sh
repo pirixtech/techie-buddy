@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+set -eox pipefail
+
 # zip up package
 cd ../lambda
 npm run zip-lambda

@@ -23,19 +23,19 @@ const GetExerciseApiHandler = {
     //        return util.isApiRequest(handlerInput, 'GetExerciseApi');
     return true
   },
-  handle (handlerInput) {
+  async handle (handlerInput) {
     const uuid = uuidv4()
 
     // "Call a service" to get the weather for this location and date.
     const bodyArea = 'neck' // TODO: parse bodyArea out of handlerInput
-    const limit = 120
-    const exercise = exerciseClient.getExercise(bodyArea, limit)
-    const name = `${bodyArea} exercise`
+    const limit = 120 // TODO: parse time limit out of handlerInput
+    const exercise = await exerciseClient.getExerciseRoutine(bodyArea, limit)
+    console.log(`exercise = ${JSON.stringify(exercise)}`)
 
     const response = {
       apiResponse: {
         id: uuid,
-        name: name,
+        name: exercise.name,
         duration: exercise.duration,
         exercise: exercise.routine
       }
