@@ -6,4 +6,4 @@ set -eox pipefail
 # TODO: fix yaml to json conversion
 # yq -r routines.yaml
 
-aws dynamodb batch-write-item --request-items file://../resources/routines.json
+aws dynamodb batch-write-item --request-items file://../resources/routines.json --profile=techie
