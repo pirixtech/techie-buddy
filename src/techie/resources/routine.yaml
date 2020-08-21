@@ -342,15 +342,83 @@ techie-buddy:
                   S: Slowly bring the base of your skull toward your back (neck extension), brining your chip up toward the ceiling.  Make sure to keep your shoulder relaxed, down and back.  Hold for 5-10 seconds and return to starting position.
             - M:
                 step:
-                  N: '3'
+                  N: '4'
                 length:
                   N: '30'
                 routine:
                   S: To increase the stretch during flexion, bring one hand behind your head and place your fingertips right above the base of the skull.  Apply light pressure.
             - M:
                 step:
-                  N: '4'
+                  N: '5'
                 length:
                   N: '30'
                 routine:
                   S: To increase the stretch during extension, bring one hand up to your forehead, placing only one or two fingers fingers on your forehead to apply a light pressure.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '11'
+        body_area:
+          S: neck
+        name:
+          S: Seated Neck Release
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Sit on a chair with your feet flat on the floor. Make sure to keep your spine straight.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: Place your left palm on the top of your head and inhale.
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: Slowly tilt your head to the left with exhalation.
+            - M:
+                step:
+                  N: '4'
+                length:
+                  N: '30'
+                routine:
+                  S: Apply gentle pressure with your palm to give a deeper stretch. Hold the position for 30 seconds.
+            - M:
+                step:
+                  N: '5'
+                length:
+                  N: '30'
+                routine:
+                  S: slowly lift your head up and release your hands.
+            - M:
+                step:
+                  N: '6'
+                length:
+                  N: '30'
+                routine:
+                  S: Slowly tilt your head to the right with exhalation.
+            - M:
+                step:
+                  N: '7'
+                length:
+                  N: '30'
+                routine:
+                  S: Apply gentle pressure with your palm to give a deeper stretch. Hold the position for 30 seconds.
+            - M:
+                step:
+                  N: '8'
+                length:
+                  N: '30'
+                routine:
+                  S: slowly lift your head up and release your hands.
