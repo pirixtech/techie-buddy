@@ -17,6 +17,8 @@ const utils = require('./utils')
 const exerciseClient = require('./exercise-client')
 const { v4: uuidv4 } = require('uuid')
 
+const alexaSkillId = 'amzn1.ask.skill.c3772f7a-4aa5-407b-8623-6a9dd104f3e8'
+
 // API handler to get and return exercise routine
 const GetExerciseApiHandler = {
   canHandle (handlerInput) {
@@ -27,7 +29,7 @@ const GetExerciseApiHandler = {
     const uuid = uuidv4()
 
     // "Call a service" to get the weather for this location and date.
-    const bodyArea = 'neck' // TODO: parse bodyArea out of handlerInput
+    let bodyArea = handlerInput.requestEnvelope.request.apiRequest.arguments.bodyArea
     const limit = 120 // TODO: parse time limit out of handlerInput
     const exercise = await exerciseClient.getExerciseRoutine(bodyArea, limit)
     console.log(`exercise = ${JSON.stringify(exercise)}`)
@@ -113,6 +115,7 @@ const LogResponseInterceptor = {
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
 // defined are included below. The order matters - they're processed top to bottom.
 exports.handler = Alexa.SkillBuilders.custom()
+  .withSkillId(alexaSkillId)
   .addRequestHandlers(
     GetExerciseApiHandler,
     SessionEndedRequestHandler,
