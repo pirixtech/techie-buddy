@@ -1,4 +1,4 @@
-const Alexa = require('ask-sdk-core')
+const Alexa = require('ask-sdk')
 
 /**
  * Helper method to find if a request is for a certain apiName.

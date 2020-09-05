@@ -45,7 +45,8 @@ const getExerciseRoutine = async (bodyArea, limit) => {
           name: exerciseItem.name,
           bodyArea: exerciseItem.body_area,
           duration: exerciseItem.duration,
-          routine: exerciseItem.exercise.map(exerciseStep => exerciseStep.routine)
+          routine: exerciseItem.exercise.map(exerciseStep => exerciseStep.routine),
+          steps: exerciseItem.exercise.length
         }
     } catch (err) {
         console.log("Failure", err.message)

@@ -68,7 +68,7 @@ techie-buddy:
                 length:
                   N: '30'
                 routine:
-                  S: Continue lifting until your body makes a straight line from your shoulders to your knees (your shoulders should still be on the floor). Keep your knees in line with your feet.
+                  S: Continue lifting until your body makes a straight line from your shoulders to your knees. Keep your knees in line with your feet.
             - M:
                 step:
                   N: '4'
@@ -108,7 +108,7 @@ techie-buddy:
                 length:
                   N: '30'
                 routine:
-                  S: Pull your right thigh towards you (keeping your upper body on the floor). Hold, then repeat on the other side.
+                  S: Pull your right thigh towards you while keeping your upper body on the floor. Hold, then repeat on the other side.
   - PutRequest:
       Item:
         exercise_id:
@@ -266,7 +266,7 @@ techie-buddy:
                 length:
                   N: '30'
                 routine:
-                  S: Hold, then repeat on other side.
+                  S: Hold, then repeat on other side.Lateral Neck Flexion
   - PutRequest:
       Item:
         exercise_id:
@@ -285,14 +285,18 @@ techie-buddy:
                 length:
                   N: '30'
                 routine:
-                  S: Stand with your feet hip-width apart, toes pointing forward or turned slightly outwards, with arms by your sides. Stiffen your abdominal muscles (“brace”) to stabilize your spine, then depress and retract your scapulae (pull shoulders down and back) without arching your low back.
+                  S: Stand with your feet hip-width apart, toes pointing forward or turned slightly outwards, with arms by your sides.
+                     Stiffen your abdominal muscles to stabilize your spine, then depress and pull shoulders down and back without arching your low back.
             - M:
                 step:
                   N: '2'
                 length:
                   N: '30'
                 routine:
-                  S: Slowly draw your right ear toward your right shoulder stopping when you feel the stretch.  Be sure to maintain body alignment keeping your shoulders down and back. Hold the stretch for 5-10 seconds.  Slowly return to starting position.  Repeat on the left side.  Perform a total of 2-4 repetitions.
+                  S: Slowly draw your right ear toward your right shoulder stopping when you feel the stretch.
+                     Be sure to maintain body alignment keeping your shoulders down and back.
+                     Hold the stretch for 5-10 seconds.  Slowly return to starting position.
+                     Repeat on the left side.  Perform a total of 2-4 repetitions.
             - M:
                 step:
                   N: '3'
@@ -325,28 +329,33 @@ techie-buddy:
                 length:
                   N: '30'
                 routine:
-                  S: Stand with your feet hip-width apart, toes pointing forward or turned slightly outwards, with arms by your sides. Stiffen your abdominal muscles (“brace”) to stabilize your spine, then depress and retract your scapulae (pull shoulders down and back) without arching your low back.
+                  S: Stand with your feet hip-width apart, toes pointing forward or turned slightly outwards, with arms by your sides.
+                     Stiffen your abdominal muscles to stabilize your spine, then depress and pull shoulders down and back without arching your low back.
             - M:
                 step:
                   N: '2'
                 length:
                   N: '30'
                 routine:
-                  S: Slowly drop your chin toward your chest (neck flexion), think of making a 'double-chin' by pressing your chin directly into your neck.    Hold for 15-30 seconds and return to starting positon.
+                  S: Slowly drop your chin toward your chest, think of making a 'double-chin' by pressing your chin directly into your neck.
+                     Hold for 15-30 seconds and return to starting positon.
             - M:
                 step:
                   N: '3'
                 length:
                   N: '30'
                 routine:
-                  S: Slowly bring the base of your skull toward your back (neck extension), brining your chip up toward the ceiling.  Make sure to keep your shoulder relaxed, down and back.  Hold for 5-10 seconds and return to starting position.
+                  S: Slowly bring the base of your skull toward your back, brining your chip up toward the ceiling.
+                     Make sure to keep your shoulder relaxed, down and back.
+                     Hold for 5-10 seconds and return to starting position.
             - M:
                 step:
                   N: '4'
                 length:
                   N: '30'
                 routine:
-                  S: To increase the stretch during flexion, bring one hand behind your head and place your fingertips right above the base of the skull.  Apply light pressure.
+                  S: To increase the stretch during flexion, bring one hand behind your head and place your fingertips right above the base of the skull.
+                     Apply light pressure.
             - M:
                 step:
                   N: '5'
@@ -422,3 +431,464 @@ techie-buddy:
                   N: '30'
                 routine:
                   S: slowly lift your head up and release your hands.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '12'
+        body_area:
+          S: hamstring
+        name:
+          S: Static Stretch Seated
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Sit on the mat and stretch out your right leg straight and bent the left one.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: rotate your right leg inwards and lean forward at the hips. Try to touch your right toe and feel the stretch under your thigh
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: repeat the stretch on the opposite side for 30s.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '13'
+        body_area:
+          S: hamstring
+        name:
+          S: Hamstring Stretch on the Back
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Lie down on your back and straighten the leg upwards as high as you can. Make sure to keep your pelvis flat on the mat.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: hold your lower thigh and support the leg to move towards your head. Here we are targeting the muscle fibers next to the knee and calf..
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: Slowly tilt your head to the left with exhalation.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '14'
+        body_area:
+          S: hamstring
+        name:
+          S: Standing Hamstring Stretch
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S:  Stand in front of a stool or any other object such as a box. Now, place your right foot on the object and start leaning forward from the hips.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: keep the outstretched leg straight. The standing leg can be slightly bent
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: Hold your wasit.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '15'
+        body_area:
+          S: neck
+        name:
+          S: Seated Clasping Neck Stretch
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Sit on a mat or chair and keep your spine straight. Now, clasp your palms together and place them on the back of your head.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: Gently press your palms down toward your thighs while tucking your jaw into your chest. Hold in this position for 30 seconds.
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S:  lift your head up and release your hands.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '16'
+        body_area:
+          S: neck
+        name:
+          S: Behind the Back Neck Stretch
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Stand with your legs parallel and hip distance apart.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: Now, reach both hands behind your back and hold your left wrist with your right hand. Straighten your left hand by gently pulling it away from yourself.
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: Slowly tilt your head towards your right shoulder. Stay in the position for 30 seconds.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '17'
+        body_area:
+          S: back
+        name:
+          S: Forward Fold
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Stand tall with the feet parallel, rest your hands on your hips, and inhale.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: Slowly start folding forward from the hips while exhaling, keep your stomach slightly in and focus on expanding your front torso as you go deeper into the position.
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: Keep your knees straight and try to touch the back of your ankles with your palms. Let your head hang loose, releasing all tension in your shoulder blades and back. Stay in this position for 30 seconds.
+            - M:
+                step:
+                  N: '4'
+                length:
+                  N: '30'
+                routine:
+                  S: Apply gentle pressure with your palm to give a deeper stretch. Hold the position for 30 seconds.
+            - M:
+                step:
+                  N: '5'
+                length:
+                  N: '30'
+                routine:
+                  S: Take your hands back to the hips and slowly rotate at the hip joints until you stand tall.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '18'
+        body_area:
+          S: shoulder
+        name:
+          S: Cobra Pose
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Lie down on your belly with your forehead resting on the ground and toes flat on the mat. Make sure to keep your legs close together.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: Keep your palms downwards under your shoulders while keeping your elbows close to your torso.
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: Inhale and slowly start lifting your head, chest and stomach while keeping your lower ribs on the floor.
+            - M:
+                step:
+                  N: '4'
+                length:
+                  N: '30'
+                routine:
+                  S: Pull your shoulders back with the support of your hands without crunching your neck. Stay in this position for 30 seconds.
+            - M:
+                step:
+                  N: '5'
+                length:
+                  N: '30'
+                routine:
+                  S: Slowly lower your chest and head to the mat while exhaling.
+                     Turn your head to the right and rest your left ear on the floor,
+                     relaxing your arms alongside your entire body.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '19'
+        body_area:
+          S: shoulder
+        name:
+          S: Thread the Needle
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Come into a tabletop position with hips over knees and shoulders over wrists. Center your head in a neutral position while looking downward.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: inhale and slowly slide your right hand underneath your left hand with your palm facing up.
+                     Here, you also need to let your right shoulder to stretch and come all the way down to the mat
+                     with the exhalation. Now, rest your cheek & right ear on the mat and gaze toward your left.
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: Allow all the stress in your neck, arms, and shoulders to drain away.
+                     Avoid pressing your body weight onto your head.
+                     Stay in this position for 30 seconds.
+            - M:
+                step:
+                  N: '4'
+                length:
+                  N: '30'
+                routine:
+                  S: Gently slide your right hand out and go back to the Table Pose.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '20'
+        body_area:
+          S: back
+        name:
+          S: 90 Lat Stretch
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Stand with your feet hip-width apart with arms by your sides.
+                     Stiffen your abdominal muscles to stabilize your spine, then pull shoulders down and back without arching your low back.
+                     Hold your chest up and out, tilt your head slightly up.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: With a slight bend in the knee, shift your weight over your heels and slowly begin bending forward at the hips,
+                     maintaining the abdominal bracing and flat back.
+                     Place your hands on the table while keeping the arms straight with the elbows extended,
+                     position the arms so there is a straight line from the shoulders, through the elbows to the wrists.
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: With your hands on the table, keep your legs directly under your hips while leaning back into your hips,
+                     straightening the legs and drawing your torso closer to the ground while keeping a flat back.
+                     Keep your chin tucked into your neck to stabilize your cervical spine and to keep your head from dropping towards the floor.
+            - M:
+                step:
+                  N: '4'
+                length:
+                  N: '30'
+                routine:
+                  S: Hold the stretch position for 15-30 seconds for a total of 2-4 repetitions.
+                     To increase the stretch of the latissimus dorsi (back) muscles, rotate your thumbs to point toward the ceiling.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '21'
+        body_area:
+          S: hand
+        name:
+          S: Shake It Out
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Begin with your hands out in front of you and palms facing the floor.
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: Slowly shake your hands by letting your wrist go limp. Continue for 30 seconds.
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: Repeat for 1 more set.
+            - M:
+                step:
+                  N: '4'
+                length:
+                  N: '30'
+                routine:
+                  S: Repeat for 1 more set.
+  - PutRequest:
+      Item:
+        exercise_id:
+          S: '22'
+        body_area:
+          S: hand
+        name:
+          S: Fist to Fan
+        duration:
+          N: '120'
+        exercise:
+          L:
+            - M:
+                step:
+                  N: '1'
+                length:
+                  N: '30'
+                routine:
+                  S: Begin with your hands in front of you and palms facing downwards
+            - M:
+                step:
+                  N: '2'
+                length:
+                  N: '30'
+                routine:
+                  S: Make a fist with both hands.
+            - M:
+                step:
+                  N: '3'
+                length:
+                  N: '30'
+                routine:
+                  S: Open the fist half way so your finger are bent at the knuckles. Hold for two seconds.
+            - M:
+                step:
+                  N: '4'
+                length:
+                  N: '30'
+                routine:
+                  S: Open your hands fully so all five fingers are straight and spread wide apart. Hold for 2 seconds.
+            - M:
+                step:
+                  N: '5'
+                length:
+                  N: '30'
+                routine:
+                  S: Re-make a fist, and repeat routine again.
+            - M:
+                step:
+                  N: '6'
+                length:
+                  N: '30'
+                routine:
+                  S: Re-make a fist, and repeat routine again.
+            - M:
+                step:
+                  N: '7'
+                length:
+                  N: '30'
+                routine:
+                  S: Re-make a fist, and repeat routine again.
+            - M:
+                step:
+                  N: '8'
+                length:
+                  N: '30'
+                routine:
+                  S: Re-make a fist, and repeat routine again.
