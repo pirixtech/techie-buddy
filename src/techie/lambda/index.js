@@ -17,6 +17,9 @@ const utils = require('./utils')
 const exerciseClient = require('./exercise-client')
 const { v4: uuidv4 } = require('uuid')
 const requestUtils  = require('./requestUtils');
+const i18next       = require('i18next');
+const sprintf       = require('sprintf-js').sprintf;
+const _             = require('lodash');
 // Localization strings
 const resources     = require('./resources')
 // APL docs
@@ -33,119 +36,42 @@ const states = {
     PROMPTED_TO_CUSTOMIZE_SPECIAL_PIZZA : 'PROMPTED_TO_CUSTOMIZE_SPECIAL_PIZZA'
 };
 
-// *****************************************************************************
-// Pizza skill Launch request handler.
-// *****************************************************************************
-//const LaunchHandler = {
-//    canHandle(handlerInput) {
-//        return true
-////        console.log(`Can handle Alexa Launch request, launch request = {Alexa.getRequestType(handlerInput.requestEnvelope)}`)
-////        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
-//    },
-//    /**
-//     * Launch request handler.
-//     * on launching the skill, user gets the 'speechOutput' message of this handler.
-//     * If user is silent or speaks something which is unrelated then user is reprompted with repromptOutput
-//     *
-//     * @param handlerInput {HandlerInput}
-//     * @returns {Response}
-//     */
-//    async handle(handlerInput) {
-//        const personId = requestUtils.getPersonId(handlerInput);
-//        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-//        const {in_progress} = sessionAttributes;
-//        console.log(`State Attribute in_progress = {in_progress}`)
-//
-//        let speakOutput, reprompt;
-//        // if they had 'in flight' orders that had not been moved to ordered.
-//        if(in_progress){
-//            if(personId){
-//                speakOutput = handlerInput.t('WELCOME_PERSONALIZED', {
-//                    personId: personId,
-//                    prompt: handlerInput.t('WELCOME_BACK')
-//                });
-//            } else {
-//                speakOutput = handlerInput.t('WELCOME_BACK');
-//            }
-//            reprompt = handlerInput.t('WELCOME_BACK_REPROMPT');
-//            // the in-progress prompt asks them if they'd like to customize anything
-//            // let's set that state for the Yes/No Intent Handlers
-//            sessionAttributes.state = states.PROMPTED_TO_CUSTOMIZE;
-//        } else {
-//            // no in progress orders
-//            let {day, period} = await requestUtils.getDayAndPeriod(handlerInput);
-//            console.log(`Get Date ... `)
-//            reprompt = handlerInput.t('WELCOME_REPROMPT');
-//            console.log(`reprompt = {reprompt}`)
-//            if (personId) {
-//                // Speaker is recognized, so greet by name
-//                console.log(`Speaker is recognized, so greet by name`)
-//                speakOutput = handlerInput.t('WELCOME_PERSONALIZED', {
-//                    personId: personId,
-//                    prompt: handlerInput.t('WELCOME', {
-//                        day: day,
-//                        period: period
-//                    })
-//                });
-//            } else {
-//                // Speaker is not recognized; give a generic greeting asking if they would like to hear our specials
-//                console.log(`Speaker is not recognized; give a generic greeting asking if they would like to hear our exercise of the day ... `)
-//                speakOutput = handlerInput.t('WELCOME', {
-//                    day: day,
-//                    period: period
-//                });
-//            }
-//            // give context to yes/no response by saving state
-//            sessionAttributes.state = states.PROMPTED_FOR_EXERCISE_OF_THE_DAY
-//            console.log(`Saving session attribute ... `)
-//        }
-//        if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']){
-//            console.log(`Render Welcome APL ... `)
-//            handlerInput.responseBuilder.addDirective({
-//                type: 'Alexa.Presentation.APL.RenderDocument',
-//                token: "welcomeToken",
-//                document: welcome_apl
-//            });
-//        }
-//        return handlerInput.responseBuilder
-//                .speak(speakOutput)
-//                .reprompt(reprompt)
-//                .getResponse();
-//    }
-//};
-
 const LaunchHandler = {
     canHandle(handlerInput) {
+        // TODO: use api request handler to verify the input request
+        console.log(`Can process the launch request`)
         return true
     },
 
     async handle(handlerInput) {
-        let speakOutput, reprompt;
-        let {day, period} = await requestUtils.getDayAndPeriod(handlerInput);
-        console.log(`Get Date ... `)
-        reprompt = handlerInput.t('WELCOME_REPROMPT');
-        console.log(`reprompt = {reprompt}`)
+      console.log(`handling launch request`)
+      let speakOutput, reprompt;
+      console.log(`Getting day and period ... `)
+      let {day, period} = await requestUtils.getDayAndPeriod(handlerInput);
+      console.log(`Get Date ... `)
+      reprompt = handlerInput.t('WELCOME_REPROMPT');
+      console.log(`reprompt = {reprompt}`)
 
-        // Speaker is not recognized; give a generic greeting asking if they would like to hear our specials
-        console.log(`Speaker is not recognized; give a generic greeting asking if they would like to hear our exercise of the day ... `)
-        speakOutput = handlerInput.t('WELCOME', {
-            day: day,
-            period: period
-        });
+      // Speaker is not recognized; give a generic greeting asking if they would like to hear our specials
+      console.log(`Speaker is not recognized; give a generic greeting asking if they would like to hear our exercise of the day ... `)
+      speakOutput = handlerInput.t('WELCOME', {
+          day: day,
+          period: period
+      });
 
-        console.log(`Checking if the interface is APL ... `)
-        if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']){
-            console.log(`Render Welcome APL ... `)
-            handlerInput.responseBuilder.addDirective({
-                type: 'Alexa.Presentation.APL.RenderDocument',
-                token: "welcomeToken",
-                document: welcome_apl
-            });
-        }
-        return handlerInput.responseBuilder
-                .speak(speakOutput)
-                .reprompt(reprompt)
-                .getResponse();
+      console.log(`Checking if the interface is APL ... `)
+      if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']){
+          console.log(`Render Welcome APL ... `)
+          handlerInput.responseBuilder.addDirective({
+              type: 'Alexa.Presentation.APL.RenderDocument',
+              token: "welcomeToken",
+              document: welcome_apl
+          });
+      }
+      return handlerInput.responseBuilder
+              .speak(speakOutput)
+              .reprompt(reprompt)
+              .getResponse();
     }
 };
 
@@ -243,16 +169,51 @@ const LogResponseInterceptor = {
   }
 }
 
+const LocalizationInterceptor = {
+    process(handlerInput) {
+        i18next
+            .init({
+                lng: _.get(handlerInput, 'requestEnvelope.request.locale'),
+                overloadTranslationOptionHandler: sprintf.overloadTranslationOptionHandler,
+                resources: resources,
+                returnObjects: true
+            });
+
+        handlerInput.t = (key, opts) => {
+            const value = i18next.t(key, {...{interpolation: {escapeValue: false}}, ...opts});
+            if (Array.isArray(value)) {
+                return value[Math.floor(Math.random() * value.length)]; // return a random element from the array
+            } else {
+                return value;
+            }
+        };
+    }
+};
+
+
 // The SkillBuilder acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
 // defined are included below. The order matters - they're processed top to bottom.
-exports.handler = Alexa.SkillBuilders.custom()
-  .withSkillId(alexaSkillId)
-  .addRequestHandlers(
-    GetExerciseApiHandler,
-    SessionEndedRequestHandler,
-    IntentReflectorHandler)
-  .addErrorHandlers(ErrorHandler)
-  .addRequestInterceptors(LogRequestInterceptor)
-  .addResponseInterceptors(LogResponseInterceptor)
-  .lambda()
+//exports.handler = Alexa.SkillBuilders.custom()
+//  .withSkillId(alexaSkillId)
+//  .addRequestHandlers(
+//    LaunchHandler,
+//    GetExerciseApiHandler,
+//    SessionEndedRequestHandler,
+//    IntentReflectorHandler)
+//  .addErrorHandlers(ErrorHandler)
+//  .addRequestInterceptors(LogRequestInterceptor)
+//  .addResponseInterceptors(LogResponseInterceptor)
+//  .lambda()
+
+module.exports.handler = Alexa.SkillBuilders.standard()
+    .addRequestHandlers(
+        LaunchHandler,
+        GetExerciseApiHandler,
+        SessionEndedRequestHandler,
+        IntentReflectorHandler)
+    .addErrorHandlers(ErrorHandler)
+    .addRequestInterceptors(LogRequestInterceptor, LocalizationInterceptor)
+    .addResponseInterceptors(LogResponseInterceptor)
+    .withAutoCreateTable(true)
+    .lambda();

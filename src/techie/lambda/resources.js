@@ -12,10 +12,10 @@
 module.exports = {
     en: {
         translation: {
-            WELCOME: "Welcome to the Pizza Reference. Would you like to hear about our {{day}} {{period}} special?",
+            WELCOME: "Welcome to the Techie Buddy. Would you like to hear about our {{day}} {{period}} exercise of the day?",
             WELCOME_PERSONALIZED: "Hi <alexa:name type='first' personId='{{personId}}' />! <break /> {{prompt}}",
-            WELCOME_BACK: "Welcome back to the Pizza Reference. Would you like to continue with your existing order or start over",
-            WELCOME_BACK_REPROMPT : "Sorry, I didn't catch that. Should we continue with your existing order or start a new one",
+            WELCOME_BACK: "Welcome back to the Techie Buddy. Would you like to continue with your existing order or start over",
+            WELCOME_BACK_REPROMPT : "Sorry, I didn't catch that. Should we continue with your existing exercise or start a new one",
             REPEAT_ORDER_AND_CUSTOMIZE : "Your order has {{orderText}}. Would you like to customize the pizza or salad? or order as is",
             REPEAT_ORDER_AND_CUSTOMIZE_REPROMPT: "Sorry, I didn't catch that, did you want to customize this order? or order as is",
             REPEAT_ORDER_AND_ADD_SOMETHING : "Your order has {{orderText}}. Would you like to add something or order as is?",
@@ -25,7 +25,7 @@ module.exports = {
             PROMPT_FOR_ACTION : "Ok. What would you like to do? You can ask to hear some of our special pizzas or just order your own custom pizza",
             HELP_PROMPT: "This skill is an Alexa Conversations reference implementation that simulates pizza ordering dialog flows using Alexa's artificial intelligence technology. You can ask me to order a pizza, order a two topping pizza or hear our specials",
             REPROMPT_FOR_ACTION : "Sorry, I didnt catch that, what would you like to do?",
-            CLOSEST_LOCATION: "The closest Pizza Reference shop to you in {{city}} is open until 9pm tonight. I can tell you their specials or you can just ask me to order a pizza",
+            CLOSEST_LOCATION: "The closest Techie Buddy shop to you in {{city}} is open until 9pm tonight. I can tell you their specials or you can just ask me to order a pizza",
             DAILY_LUNCH_SPECIAL: "Our {{day}} lunch special comes with a {{size}} {{toppingsList}} pizza with {{cheese}} cheese on {{crust}} crust, a {{salad}} and {{drinks}} for ${{cost}}. Would you like to order?",
             DAILY_DINNER_SPECIAL: "Our {{day}} dinner special comes with a {{size}} {{toppingsList}} pizza with {{cheese}} cheese on {{crust}} crust, a {{salad}}, a side order of {{side}}, {{dessert}} and {{drinks}} for ${{cost}}. Would you like to order?",
             DAILY_SPECIAL_REPROMPT: "Sorry, I didn't catch that. Would you like to order the {{day}} {{period}} special?",
