@@ -45,6 +45,7 @@ module.exports = {
       CLOSEST_LOCATION: 'The closest Techie Buddy shop to you in {{city}} is open until 9pm tonight. I can tell you their specials or you can just ask me to order a pizza',
       DAILY_EXERCISE_OF_THE_DAY: 'Hooray! Follow me on today\'s exercise of the day! {{exercise}}. {{nextStep}}',
       DAILY_EXERCISE_OF_THE_DAY_REPROMPT: "Sorry, I didn't quite catch that. Would you like to listen to the exercise of the day for {{day}}?",
+      DAILY_EXERCISE_OF_THE_DAY_NEXT_STEP: "What do you like to do next? You can say \"I'm done\" or \"I don't feel good\"",
       DAILY_DINNER_SPECIAL: 'Our {{day}} dinner special comes with a {{size}} {{toppingsList}} pizza with {{cheese}} cheese on {{crust}} crust, a {{salad}}, a side order of {{side}}, {{dessert}} and {{drinks}} for ${{cost}}. Would you like to order?',
       ORDER_DAILY_SPECIAL: 'Ok, adding the {{day}} {{period}} special to your order. Would you like to add side orders, drinks or desserts?',
       ORDER_DAILY_SPECIAL_REPROMPT: "I've got your {{day}} {{period}} added to your order. Would you like to add side orders, drinks or desserts?",

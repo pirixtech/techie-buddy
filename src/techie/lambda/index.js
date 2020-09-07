@@ -28,7 +28,7 @@ const alexaSkillId = 'amzn1.ask.skill.c3772f7a-4aa5-407b-8623-6a9dd104f3e8'
 
 const states = {
   PROMPTED_FOR_EXERCISE_OF_THE_DAY: 'PROMPTED_FOR_EXERCISE_OF_THE_DAY',
-  PROMPTED_TO_ORDER_DAILY_SPECIAL: 'PROMPTED_TO_ORDER_DAILY_SPECIAL',
+  ALEXA_CONVO_GET_PHYSCIAL_EXERCISE: 'ALEXA_CONVO_GET_PHYSCIAL_EXERCISE',
   PROMPTED_TO_CUSTOMIZE: 'PROMPTED_TO_CUSTOMIZE',
   PROMPTED_TO_ADD_TO_ORDER: 'PROMPTED_TO_ADD_TO_ORDER',
   PROMPTED_TO_ORDER_SPECIAL: 'PROMPTED_TO_ORDER_SPECIAL',
@@ -45,18 +45,20 @@ const LaunchHandler = {
   },
 
   async handle (handlerInput) {
-    let speakOutput, reprompt
     const { day } = await utils.getDayofWeek(handlerInput)
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
     console.log(`Today is ${day}`)
-    reprompt = handlerInput.t('WELCOME_REPROMPT')
+    const reprompt = handlerInput.t('WELCOME_REPROMPT')
 
     // Speaker is not recognized give a generic greeting asking if they would like to hear our specials
     console.log(
       'Give a generic greeting asking if they would like to hear our exercise of the day ... '
     )
-    speakOutput = handlerInput.t('WELCOME', {
+    const speakOutput = handlerInput.t('WELCOME', {
       day: day
     })
+
+    sessionAttributes.state = states.PROMPTED_FOR_EXERCISE_OF_THE_DAY
 
     //      console.log(`Checking if the interface is APL ... `)
     //      if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']){
@@ -93,26 +95,49 @@ const YesIntentHandler = {
 
   async handle (handlerInput) {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
+    console.log(`YesIntentHandler session attributes: ${JSON.stringify(sessionAttributes)}`)
     const { day } = await utils.getDayofWeek(handlerInput)
+    let speakOutput = ''
+    let reprompt = ''
 
-    // if we prompted them for exercise of the day
-    console.log('Getting exercise of the day on ' + day)
-    // copying to new object to not mess up downstream storage of object in session
-    const spokenExerciseOfTheDay = JSON.parse(
-      JSON.stringify(resources.getExerciseOfTheDay(day))
-    )
-    console.log(
-      'Daily exercise of the day: ' + JSON.stringify(spokenExerciseOfTheDay)
-    )
+    if (sessionAttributes.state === states.PROMPTED_FOR_EXERCISE_OF_THE_DAY) {
+      // Prompt user for exercise of the day
+      console.log('Getting exercise of the day on ' + day)
+      // copying to new object to not mess up downstream storage of object in session
+      const spokenExerciseOfTheDay = JSON.parse(
+        JSON.stringify(resources.getExerciseOfTheDay(day))
+      )
+      console.log(
+        'Daily exercise of the day: ' + JSON.stringify(spokenExerciseOfTheDay)
+      )
 
-    const speakOutput = handlerInput.t('DAILY_EXERCISE_OF_THE_DAY', {
-      exercise: JSON.stringify(spokenExerciseOfTheDay)
-    })
+      speakOutput = handlerInput.t('DAILY_EXERCISE_OF_THE_DAY', {
+        exercise: JSON.stringify(spokenExerciseOfTheDay),
+        nextStep: handlerInput.t('DAILY_EXERCISE_OF_THE_DAY_NEXT_STEP')
+      })
 
-    const reprompt = handlerInput.t('DAILY_EXERCISE_OF_THE_DAY_REPROMPT', {
-      day: day
-    })
-    sessionAttributes.state = states.GetDailyExerciseOfTheDay
+      reprompt = handlerInput.t('DAILY_EXERCISE_OF_THE_DAY_REPROMPT', {
+        day: day
+      })
+      sessionAttributes.state = states.ALEXA_CONVO_GET_PHYSCIAL_EXERCISE // hand off to Alexa Conversations
+    } else {
+      // go to Alexa Conversations for short exercises
+      return handlerInput.responseBuilder
+        .addDirective({
+          type: 'Dialog.DelegateRequest',
+          target: 'AMAZON.Conversations',
+          period: {
+            until: 'EXPLICIT_RETURN'
+          },
+          updatedRequest: {
+            type: 'Dialog.InputRequest',
+            input: {
+              name: 'tb_invoke_getPhyscicalPainDesc'
+            }
+          }
+        })
+        .getResponse()
+    }
 
     return handlerInput.responseBuilder
       .speak(speakOutput)
@@ -154,6 +179,52 @@ const NoIntentHandler = {
           }
         }
       })
+      .getResponse()
+  }
+}
+
+/**
+ * FallbackIntentHandler - Handle all other requests to the skill
+ *
+ * @param handlerInput
+ * @returns response
+ *
+ * See https://developer.amazon.com/en-US/docs/alexa/conversations/handle-api-calls.html
+ */
+const FallbackIntentHandler = {
+  canHandle (handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'AMAZON.FallbackIntent'
+  },
+
+  handle (handlerInput) {
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
+    console.log(`FallbackIntentHandler session attributes: ${JSON.stringify(sessionAttributes)}`)
+
+    if (sessionAttributes.state === states.ALEXA_CONVO_GET_PHYSCIAL_EXERCISE) {
+      // go to Alexa Conversations for short exercises
+      return handlerInput.responseBuilder
+        .addDirective({
+          type: 'Dialog.DelegateRequest',
+          target: 'AMAZON.Conversations',
+          period: {
+            until: 'EXPLICIT_RETURN'
+          },
+          updatedRequest: {
+            type: 'Dialog.InputRequest',
+            input: {
+              name: 'tb_invoke_getPhyscicalPainDesc'
+            }
+          }
+        })
+        .getResponse()
+    }
+
+    const speakOutput = handlerInput.t('FALLBACK', {})
+    const reprompt = handlerInput.t('FALLBACK_REPROMPT', {})
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .reprompt(reprompt)
       .getResponse()
   }
 }
@@ -367,6 +438,7 @@ module.exports.handler = Alexa.SkillBuilders.standard()
     GetExerciseApiHandler,
     CancelStopHandler,
     EndConversationHandler,
+    FallbackIntentHandler,
     SessionEndedRequestHandler,
     IntentReflectorHandler
   )
