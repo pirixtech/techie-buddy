@@ -9,6 +9,7 @@
 // OR STATUTORY, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS
 // OR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
 // *****************************************************************************
+
 'use strict'
 
 const Alexa = require('ask-sdk')
