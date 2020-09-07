@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
+    "lint": "standard *.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "zip-package": "cd .. && rm -f package.zip && zip -r package.zip *",
     "zip-lambda": "rm -f lambda.zip && zip -r lambda.zip *",
@@ -35,5 +36,8 @@
     "i18next": "^19.4.4",
     "lodash": "^4.17.15",
     "sprintf-js": "^1.1.2"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
   }
 }
