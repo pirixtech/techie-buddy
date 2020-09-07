@@ -32,13 +32,28 @@
           {
             "type": "Speech",
             "contentType": "text",
-            "when": "${index == length+1}",
-            "content": "What do you like to do next? You can say I'm done or specific area you are not feeling comfortable such as my neck hurts",
+            "when": "${index == payload.getPhysicalExerciseResult.steps-1}",
+            "content": "What do you like to do next? You can say \"I'm done\" or specific area you are not feeling comfortable such as \"My neck hurts\"",
             "description": "Close the session"
           }
         ]
       }
     }
   },
-  "datasources": {}
+  "datasources": {
+    "getPhysicalExerciseResult": {
+      "id": "8d385a8e-e820-4ac4-b58c-694cb0aa5766",
+      "name": "Neck Flexion and Extension",
+      "duration": 120,
+      "bodyArea": "neck",
+      "steps": 5,
+      "exercise": [
+        "Stand with your feet hip-width apart, toes pointing forward or turned slightly outwards, with arms by your sides. Stiffen your abdominal musclesto stabilize your spine, then depress and pull shoulders down and back without arching your low back.",
+        "Slowly drop your chin toward your chest, think of making a 'double-chin' by pressing your chin directly into your neck. Hold for 15-30 seconds and return to starting position.",
+        "Slowly bring the base of your skull toward your back, brining your chip up toward the ceiling.  Make sure to keep your shoulder relaxed, down and back. Hold for 5-10 seconds and return to starting position.",
+        "To increase the stretch during flexion, bring one hand behind your head and place your fingertips right above the base of the skull.  Apply light pressure.",
+        "To increase the stretch during extension, bring one hand up to your forehead, placing only one or two fingers on your forehead to apply a light pressure."
+      ]
+    }
+  }
 }
