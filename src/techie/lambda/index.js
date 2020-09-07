@@ -92,25 +92,24 @@ const YesIntentHandler = {
   },
 
   async handle (handlerInput) {
-    let speakOutput, reprompt
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
-    const { day } = await requestUtils.getDayofWeek(handlerInput)
+    const { day } = await utils.getDayofWeek(handlerInput)
 
     // if we prompted them for specials
-    console.log('Getting daily exercise of exercise on ' + day)
+    console.log('Getting exercise of the day on ' + day)
     // copying to new object to not mess up downstream storage of object in session
     const spokenExerciseOfTheDay = JSON.parse(
-      JSON.stringify(menu.getDailyExerciseOfDay(day))
+      JSON.stringify(resources.getExerciseOfTheDay(day))
     )
     console.log(
       'Daily exercise of the day: ' + JSON.stringify(spokenExerciseOfTheDay)
     )
 
-    speakOutput = handlerInput.t('DAILY_EXERCISE_OF_DAY', {
+    const speakOutput = handlerInput.t('DAILY_EXERCISE_OF_DAY', {
       exercise: spokenExerciseOfTheDay
     })
 
-    reprompt = handlerInput.t('DAILY_EXERCISE_OF_DAY_REPROMPT', {
+    const reprompt = handlerInput.t('DAILY_EXERCISE_OF_DAY_REPROMPT', {
       day: day
     })
     sessionAttributes.state = states.GetDailyExerciseOfTheDay
@@ -162,8 +161,8 @@ const NoIntentHandler = {
 // API handler to get and return exercise routine
 const GetExerciseApiHandler = {
   canHandle (handlerInput) {
-    //        return utils.isApiRequest(handlerInput, 'GetExerciseApi')
-    return true
+    return utils.isApiRequest(handlerInput, 'getPhysicalExercise')
+    // return true
   },
   async handle (handlerInput) {
     const uuid = uuidv4()
@@ -360,6 +359,7 @@ const LocalizationInterceptor = {
 //  .lambda()
 
 module.exports.handler = Alexa.SkillBuilders.standard()
+  .withSkillId(alexaSkillId)
   .addRequestHandlers(
     LaunchHandler,
     YesIntentHandler,
