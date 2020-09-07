@@ -7,19 +7,19 @@ AWS.config.update({
 })
 
 const getRoutineParams = (bodyArea, limit) => {
-    return {
-      TableName: 'techie-buddy',
-      IndexName: 'body_area-duration-index',
-      KeyConditionExpression: '#body = :bodyAreaValue AND #duration <= :durationLimitValue',
-      ExpressionAttributeNames: {
-        '#body': 'body_area',
-        '#duration': 'duration'
-      },
-      ExpressionAttributeValues: {
-        ':bodyAreaValue': bodyArea,
-        ':durationLimitValue': limit
-      }
+  return {
+    TableName: 'techie-buddy',
+    IndexName: 'body_area-duration-index',
+    KeyConditionExpression: '#body = :bodyAreaValue AND #duration <= :durationLimitValue',
+    ExpressionAttributeNames: {
+      '#body': 'body_area',
+      '#duration': 'duration'
+    },
+    ExpressionAttributeValues: {
+      ':bodyAreaValue': bodyArea,
+      ':durationLimitValue': limit
     }
+  }
 }
 
 /**
@@ -34,26 +34,25 @@ const getExerciseRoutine = async (bodyArea, limit) => {
     const params = getRoutineParams(bodyArea, limit)
 
     try {
-        const data = await docClient.query(params).promise()
+      const data = await docClient.query(params).promise()
 
-        // randomly choose one exercise to return
-        const exerciseItem = data.Items[random.int(0, data.Count - 1)]
+      // randomly choose one exercise to return
+      const exerciseItem = data.Items[random.int(0, data.Count - 1)]
 
-        console.log(`Success! data returned = ${JSON.stringify(exerciseItem)}`)
+      console.log(`Success! data returned = ${JSON.stringify(exerciseItem)}`)
 
-        return {
-          name: exerciseItem.name,
-          bodyArea: exerciseItem.body_area,
-          duration: exerciseItem.duration,
-          routine: exerciseItem.exercise.map(exerciseStep => exerciseStep.routine),
-          steps: exerciseItem.exercise.length
-        }
+      return {
+        name: exerciseItem.name,
+        bodyArea: exerciseItem.body_area,
+        duration: exerciseItem.duration,
+        routine: exerciseItem.exercise.map(exerciseStep => exerciseStep.routine),
+        steps: exerciseItem.exercise.length
+      }
     } catch (err) {
-        console.log("Failure", err.message)
-        // there is no data here, you can return undefined or similar
+      console.log('Failure', err.message)
+      // there is no data here, you can return undefined or similar
     }
   }
-
 }
 
 module.exports = {
