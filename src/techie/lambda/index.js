@@ -176,6 +176,60 @@ const GetExerciseApiHandler = {
   }
 }
 
+const CancelStopHandler = {
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return request.type === 'IntentRequest' &&
+      (request.intent.name === 'AMAZON.CancelIntent' || request.intent.name === 'AMAZON.StopIntent');
+  },
+
+  handle(handlerInput) {
+    const responseBuilder = handlerInput.responseBuilder;
+    const speechOutput = 'Okay, talk to you later! ';
+
+    return responseBuilder
+      .speak(speechOutput)
+      .withShouldEndSession(true)
+      .getResponse();
+  },
+}
+
+const EndConversationHandler = {
+    canHandle(handlerInput) {
+        return utils.isApiRequest(handlerInput, 'getPhysicalExercise');
+    },
+
+    /**
+     * Get Exercise API
+     * Consumes: bodyArea
+     * Returns: Valid exercise routine for the specified body part
+     *
+     * @param handlerInput {HandlerInput}
+     * @return {Promise<Response>}
+     */
+     handle(handlerInput) {
+//        const apiArguments = requestUtils.getApiArguments(handlerInput);
+//        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+//        sessionAttributes.in_progress = {pizza : apiArguments};
+
+        return {
+            directives : [{
+                type: 'Dialog.DelegateRequest',
+                target: 'skill',
+                period: {
+                    until: 'EXPLICIT_RETURN'
+                },
+                updatedRequest: {
+                    type: 'IntentRequest',
+                    intent: {
+                        name: 'AMAZON.StopIntent',
+                    }
+                }}],
+                apiResponse :{}
+            }
+        }
+}
+
 const SessionEndedRequestHandler = {
   canHandle (handlerInput) {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === 'SessionEndedRequest'
@@ -284,6 +338,8 @@ module.exports.handler = Alexa.SkillBuilders.standard()
         YesIntentHandler,
         NoIntentHandler,
         GetExerciseApiHandler,
+        CancelStopHandler,
+        EndConversationHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler)
     .addErrorHandlers(ErrorHandler)
