@@ -16,10 +16,9 @@ const Alexa = require('ask-sdk')
 const utils = require('./utils')
 const exerciseClient = require('./exercise-client')
 const { v4: uuidv4 } = require('uuid')
-const requestUtils  = require('./requestUtils');
-const i18next       = require('i18next');
-const sprintf       = require('sprintf-js').sprintf;
-const _             = require('lodash');
+const i18next       = require('i18next')
+const sprintf       = require('sprintf-js').sprintf
+const _             = require('lodash')
 // Localization strings
 const resources     = require('./resources')
 // APL docs
@@ -34,51 +33,124 @@ const states = {
     PROMPTED_TO_ADD_TO_ORDER: 'PROMPTED_TO_ADD_TO_ORDER',
     PROMPTED_TO_ORDER_SPECIAL : 'PROMPTED_TO_ORDER_SPECIAL',
     PROMPTED_TO_CUSTOMIZE_SPECIAL_PIZZA : 'PROMPTED_TO_CUSTOMIZE_SPECIAL_PIZZA'
-};
+}
 
 const LaunchHandler = {
     canHandle(handlerInput) {
         // TODO: use api request handler to verify the input request
         console.log(`Can process the launch request`)
-        return true
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest'
     },
 
     async handle(handlerInput) {
-      console.log(`handling launch request`)
-      let speakOutput, reprompt;
-      console.log(`Getting day and period ... `)
-      let {day, period} = await requestUtils.getDayAndPeriod(handlerInput);
-      console.log(`Get Date ... `)
-      reprompt = handlerInput.t('WELCOME_REPROMPT');
-      console.log(`reprompt = {reprompt}`)
+      let speakOutput, reprompt
+      let {day} = await utils.getDayofWeek(handlerInput)
+      console.log(`Today is ${day}`)
+      reprompt = handlerInput.t('WELCOME_REPROMPT')
 
-      // Speaker is not recognized; give a generic greeting asking if they would like to hear our specials
-      console.log(`Speaker is not recognized; give a generic greeting asking if they would like to hear our exercise of the day ... `)
+      // Speaker is not recognized give a generic greeting asking if they would like to hear our specials
+      console.log(`Give a generic greeting asking if they would like to hear our exercise of the day ... `)
       speakOutput = handlerInput.t('WELCOME', {
-          day: day,
-          period: period
-      });
+          day: day
+      })
 
-      console.log(`Checking if the interface is APL ... `)
-      if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']){
-          console.log(`Render Welcome APL ... `)
-          handlerInput.responseBuilder.addDirective({
-              type: 'Alexa.Presentation.APL.RenderDocument',
-              token: "welcomeToken",
-              document: welcome_apl
-          });
-      }
+//      console.log(`Checking if the interface is APL ... `)
+//      if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.APL']){
+//          console.log(`Render Welcome APL ... `)
+//          handlerInput.responseBuilder.addDirective({
+//              type: 'Alexa.Presentation.APL.RenderDocument',
+//              token: "welcomeToken",
+//              document: welcome_apl
+//          })
+//      }
       return handlerInput.responseBuilder
               .speak(speakOutput)
               .reprompt(reprompt)
-              .getResponse();
+              .getResponse()
+    }
+}
+
+/**
+ * AMAZON.YesIntentHandler.
+ *
+ * Used in response to
+ *  - being prompted to hear the daily exercise of the day
+ *
+ * @param handlerInput {HandlerInput}
+ * @returns {Response}
+ */
+const YesIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent'
+    },
+
+    async handle(handlerInput) {
+        let speakOutput, reprompt
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
+        let {day} = await requestUtils.getDayofWeek(handlerInput)
+
+        // if we prompted them for specials
+        console.log("Getting daily exercise of exercise on " + day)
+        // copying to new object to not mess up downstream storage of object in session
+        let spoken_exercise_of_day = JSON.parse(JSON.stringify(menu.getDailyExerciseOfDay(day)))
+        console.log('Daily exercise of the day: ' + JSON.stringify(spoken_exercise_of_day))
+
+        speakOutput = handlerInput.t('DAILY_EXERCISE_OF_DAY', {
+            exercise: spoken_exercise_of_day
+        })
+
+        reprompt = handlerInput.t('DAILY_EXERCISE_OF_DAY_REPROMPT',{
+            day: day
+        })
+        sessionAttributes.state = states.GetDailyExerciseOfTheDay
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(reprompt)
+            .getResponse()
+    }
+}
+
+ /**
+ * AMAZON.NoIntentHandler.
+ *
+ * Used in response to
+ *  - being prompted to hear the daily specials
+ *  - ordering a daily special
+ *
+ * @param handlerInput {HandlerInput}
+ * @returns {Response}
+ */
+const NoIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.NoIntent'
+    },
+
+    handle(handlerInput) {
+        return handlerInput.responseBuilder
+            .addDirective({
+                type: 'Dialog.DelegateRequest',
+                target: 'AMAZON.Conversations',
+                period: {
+                    until: 'EXPLICIT_RETURN'
+                },
+                updatedRequest: {
+                    type: 'Dialog.InputRequest',
+                    input: {
+                        name: 'tb_invoke_getPhyscicalPainDesc'
+                    }
+                }
+            })
+            .getResponse()
     }
 };
 
 // API handler to get and return exercise routine
 const GetExerciseApiHandler = {
   canHandle (handlerInput) {
-    //        return utils.isApiRequest(handlerInput, 'GetExerciseApi');
+    //        return utils.isApiRequest(handlerInput, 'GetExerciseApi')
     return true
   },
   async handle (handlerInput) {
@@ -177,18 +249,18 @@ const LocalizationInterceptor = {
                 overloadTranslationOptionHandler: sprintf.overloadTranslationOptionHandler,
                 resources: resources,
                 returnObjects: true
-            });
+            })
 
         handlerInput.t = (key, opts) => {
-            const value = i18next.t(key, {...{interpolation: {escapeValue: false}}, ...opts});
+            const value = i18next.t(key, {...{interpolation: {escapeValue: false}}, ...opts})
             if (Array.isArray(value)) {
-                return value[Math.floor(Math.random() * value.length)]; // return a random element from the array
+                return value[Math.floor(Math.random() * value.length)] // return a random element from the array
             } else {
-                return value;
+                return value
             }
-        };
+        }
     }
-};
+}
 
 
 // The SkillBuilder acts as the entry point for your skill, routing all request and response
@@ -209,6 +281,8 @@ const LocalizationInterceptor = {
 module.exports.handler = Alexa.SkillBuilders.standard()
     .addRequestHandlers(
         LaunchHandler,
+        YesIntentHandler,
+        NoIntentHandler,
         GetExerciseApiHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler)
@@ -216,4 +290,4 @@ module.exports.handler = Alexa.SkillBuilders.standard()
     .addRequestInterceptors(LogRequestInterceptor, LocalizationInterceptor)
     .addResponseInterceptors(LogResponseInterceptor)
     .withAutoCreateTable(true)
-    .lambda();
+    .lambda()

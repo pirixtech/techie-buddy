@@ -9,10 +9,41 @@
 // OR STATUTORY, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS
 // OR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
 // *****************************************************************************
+'use strict'
+
+const exercise_of_day = {
+  sunday : {
+    exercise: "Special exercise of the day Sunday"
+  },
+  monday : {
+    exercise: "Special exercise of the day Monday"
+  },
+  tuesday : {
+    exercise: "Special exercise of the day Tuesday"
+  },
+  wednesday : {
+    exercise: "Special exercise of the day Wednesday"
+  },
+  thursday : {
+    exercise: "Special exercise of the day Thursday"
+  },
+  friday : {
+    exercise: "Special exercise of the day Friday"
+  },
+  saturday : {
+    exercise: "Special exercise of the day Saturday"
+  }
+}
+
+const getDailyExerciseOfDay = (day) => {
+  return exercise_of_day[day];
+}
+
 module.exports = {
+    exercise_of_day,
     en: {
         translation: {
-            WELCOME: "Welcome to the Techie Buddy. Would you like to hear about our {{day}} {{period}} exercise of the day?",
+            WELCOME: "Welcome to the Techie Buddy. Would you like to hear about our {{day}} exercise of the day?",
             WELCOME_PERSONALIZED: "Hi <alexa:name type='first' personId='{{personId}}' />! <break /> {{prompt}}",
             WELCOME_BACK: "Welcome back to the Techie Buddy. Would you like to continue with your existing order or start over",
             WELCOME_BACK_REPROMPT : "Sorry, I didn't catch that. Should we continue with your existing exercise or start a new one",
@@ -20,15 +51,15 @@ module.exports = {
             REPEAT_ORDER_AND_CUSTOMIZE_REPROMPT: "Sorry, I didn't catch that, did you want to customize this order? or order as is",
             REPEAT_ORDER_AND_ADD_SOMETHING : "Your order has {{orderText}}. Would you like to add something or order as is?",
             REPEAT_ORDER_AND_ADD_SOMETHING_REPROMPT: "Sorry, I didn't catch that, did you want to to add something or order as is?",
-            WELCOME_REPROMPT : "Sorry, I didn't catch that. Just tell me which part of your body hurts",
-            GENERIC_REPROMPT: "Sorry, I didn't catch that, would you like to order a pizza or maybe hear our specials?",
+            WELCOME_REPROMPT : "Sorry, I didn't catch that. Just let me know which part of your body hurts",
+            GENERIC_REPROMPT: "Sorry, I didn't catch that, would you like to tell me which part of your body hurts?",
             PROMPT_FOR_ACTION : "Ok. What would you like to do? You can ask to hear some of our special pizzas or just order your own custom pizza",
             HELP_PROMPT: "This skill is an Alexa Conversations reference implementation that simulates pizza ordering dialog flows using Alexa's artificial intelligence technology. You can ask me to order a pizza, order a two topping pizza or hear our specials",
             REPROMPT_FOR_ACTION : "Sorry, I didnt catch that, what would you like to do?",
             CLOSEST_LOCATION: "The closest Techie Buddy shop to you in {{city}} is open until 9pm tonight. I can tell you their specials or you can just ask me to order a pizza",
-            DAILY_LUNCH_SPECIAL: "Our {{day}} lunch special comes with a {{size}} {{toppingsList}} pizza with {{cheese}} cheese on {{crust}} crust, a {{salad}} and {{drinks}} for ${{cost}}. Would you like to order?",
+            DAILY_EXERCISE_OF_DAY: "Our {{day}} lunch special comes with a {{size}} {{toppingsList}} pizza with {{cheese}} cheese on {{crust}} crust, a {{salad}} and {{drinks}} for ${{cost}}. Would you like to order?",
+            DAILY_EXERCISE_OF_DAY_REPROMPT: "Sorry, I didn't catch that. Would you like to listen to the {{day}} exercise of the day?",
             DAILY_DINNER_SPECIAL: "Our {{day}} dinner special comes with a {{size}} {{toppingsList}} pizza with {{cheese}} cheese on {{crust}} crust, a {{salad}}, a side order of {{side}}, {{dessert}} and {{drinks}} for ${{cost}}. Would you like to order?",
-            DAILY_SPECIAL_REPROMPT: "Sorry, I didn't catch that. Would you like to order the {{day}} {{period}} special?",
             ORDER_DAILY_SPECIAL : "Ok, adding the {{day}} {{period}} special to your order. Would you like to add side orders, drinks or desserts?",
             ORDER_DAILY_SPECIAL_REPROMPT: "I've got your {{day}} {{period}} added to your order. Would you like to add side orders, drinks or desserts?",
             ADD_TO_ORDER : "Ok, you can ask for a list of sides, drinks and desserts or just ask to add something by name",
@@ -75,4 +106,4 @@ module.exports = {
             EXIT: "Goodbye!",
         }
     }
-};
+}

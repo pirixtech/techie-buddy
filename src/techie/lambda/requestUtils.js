@@ -57,9 +57,9 @@ const getDayAndPeriod = async (handlerInput) => {
     console.log("The current hour in the user's timezone: " + hour);
     let period;
     if(hour <=  14 && hour >= 2){
-        period = "lunch"
+        period = "morning"
     } else {
-        period = "dinner";
+        period = "afternoon";
     }
     return {
         day: requestDate.toLocaleString('en-US', { timeZone: userTimeZone, weekday: 'long' }).toLowerCase(),
