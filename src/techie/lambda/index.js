@@ -95,7 +95,7 @@ const YesIntentHandler = {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
     const { day } = await utils.getDayofWeek(handlerInput)
 
-    // if we prompted them for specials
+    // if we prompted them for exercise of the day
     console.log('Getting exercise of the day on ' + day)
     // copying to new object to not mess up downstream storage of object in session
     const spokenExerciseOfTheDay = JSON.parse(
@@ -105,11 +105,11 @@ const YesIntentHandler = {
       'Daily exercise of the day: ' + JSON.stringify(spokenExerciseOfTheDay)
     )
 
-    const speakOutput = handlerInput.t('DAILY_EXERCISE_OF_DAY', {
-      exercise: spokenExerciseOfTheDay
+    const speakOutput = handlerInput.t('DAILY_EXERCISE_OF_THE_DAY', {
+      exercise: JSON.stringify(spokenExerciseOfTheDay)
     })
 
-    const reprompt = handlerInput.t('DAILY_EXERCISE_OF_DAY_REPROMPT', {
+    const reprompt = handlerInput.t('DAILY_EXERCISE_OF_THE_DAY_REPROMPT', {
       day: day
     })
     sessionAttributes.state = states.GetDailyExerciseOfTheDay

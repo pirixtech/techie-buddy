@@ -12,27 +12,13 @@
 'use strict'
 
 const exerciseOfTheDay = {
-  sunday: {
-    exercise: 'Special exercise of the day Sunday'
-  },
-  monday: {
-    exercise: 'Special exercise of the day Monday'
-  },
-  tuesday: {
-    exercise: 'Special exercise of the day Tuesday'
-  },
-  wednesday: {
-    exercise: 'Special exercise of the day Wednesday'
-  },
-  thursday: {
-    exercise: 'Special exercise of the day Thursday'
-  },
-  friday: {
-    exercise: 'Special exercise of the day Friday'
-  },
-  saturday: {
-    exercise: 'Special exercise of the day Saturday'
-  }
+  sunday: 'Special exercise of the day for Sunday',
+  monday: 'Special exercise of the day for Monday',
+  tuesday: 'Special exercise of the day for Tuesday',
+  wednesday: 'Special exercise of the day for Wednesday',
+  thursday: 'Special exercise of the day for Thursday',
+  friday: 'Special exercise of the day for Friday',
+  saturday: 'Special exercise of the day for Saturday'
 }
 
 const getExerciseOfTheDay = (day) => {
@@ -57,8 +43,8 @@ module.exports = {
       HELP_PROMPT: "This skill is an Alexa Conversations reference implementation that simulates pizza ordering dialog flows using Alexa's artificial intelligence technology. You can ask me to order a pizza, order a two topping pizza or hear our specials",
       REPROMPT_FOR_ACTION: 'Sorry, I didnt catch that, what would you like to do?',
       CLOSEST_LOCATION: 'The closest Techie Buddy shop to you in {{city}} is open until 9pm tonight. I can tell you their specials or you can just ask me to order a pizza',
-      DAILY_EXERCISE_OF_DAY: 'Our {{day}} lunch special comes with a {{size}} {{toppingsList}} pizza with {{cheese}} cheese on {{crust}} crust, a {{salad}} and {{drinks}} for ${{cost}}. Would you like to order?',
-      DAILY_EXERCISE_OF_DAY_REPROMPT: "Sorry, I didn't catch that. Would you like to listen to the {{day}} exercise of the day?",
+      DAILY_EXERCISE_OF_THE_DAY: 'Hooray! Follow me on today\'s exercise of the day! {{exercise}}',
+      DAILY_EXERCISE_OF_THE_DAY_REPROMPT: "Sorry, I didn't quite catch that. Would you like to listen to the exercise of the day for {{day}}?",
       DAILY_DINNER_SPECIAL: 'Our {{day}} dinner special comes with a {{size}} {{toppingsList}} pizza with {{cheese}} cheese on {{crust}} crust, a {{salad}}, a side order of {{side}}, {{dessert}} and {{drinks}} for ${{cost}}. Would you like to order?',
       ORDER_DAILY_SPECIAL: 'Ok, adding the {{day}} {{period}} special to your order. Would you like to add side orders, drinks or desserts?',
       ORDER_DAILY_SPECIAL_REPROMPT: "I've got your {{day}} {{period}} added to your order. Would you like to add side orders, drinks or desserts?",
