@@ -1,0 +1,5 @@
+{
+  "when": "${index != 0 && index != payload.getPhysicalExerciseResult.steps-1}",
+  "type": "Silence",
+  "duration": 10000
+}
