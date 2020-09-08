@@ -165,6 +165,9 @@ const NoIntentHandler = {
   },
 
   handle (handlerInput) {
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
+    sessionAttributes.state = states.ALEXA_CONVO_GET_PHYSCIAL_EXERCISE // hand off to Alexa Conversations
+
     return handlerInput.responseBuilder
       .addDirective({
         type: 'Dialog.DelegateRequest',
