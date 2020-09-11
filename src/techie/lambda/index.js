@@ -167,8 +167,12 @@ const NoIntentHandler = {
   handle (handlerInput) {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
     sessionAttributes.state = states.ALEXA_CONVO_GET_PHYSCIAL_EXERCISE // hand off to Alexa Conversations
+    const speakOutput = handlerInput.t('PROMPT_FOR_ACTION', {})
+    const reprompt = handlerInput.t('REPROMPT_FOR_ACTION', {})
 
     return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .reprompt(reprompt)
       .addDirective({
         type: 'Dialog.DelegateRequest',
         target: 'AMAZON.Conversations',
@@ -227,6 +231,67 @@ const FallbackIntentHandler = {
     const reprompt = handlerInput.t('FALLBACK_REPROMPT', {})
     return handlerInput.responseBuilder
       .speak(speakOutput)
+      .reprompt(reprompt)
+      .getResponse()
+  }
+}
+
+/**
+ * HelpIntentHandler - Handle help requests to the skill
+ *
+ * @param handlerInput
+ * @returns response
+ *
+ * See https://developer.amazon.com/en-US/docs/alexa/conversations/handle-api-calls.html
+ */
+const HelpIntentHandler = {
+  canHandle (handlerInput) {
+    console.log('Determining handle Help Intent')
+    const result = handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+      handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent'
+    return result
+  },
+
+  handle (handlerInput) {
+    console.log('In HelpIntentHandler')
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
+    console.log(`HelpIntentHandler session attributes: ${JSON.stringify(sessionAttributes)}`)
+
+    const speakOutput = handlerInput.t('HELP_PROMPT')
+    const reprompt = handlerInput.t('GENERIC_REPROMPT')
+
+    sessionAttributes.state = states.ALEXA_CONVO_GET_PHYSCIAL_EXERCISE // hand off to Alexa Conversations
+
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .reprompt(reprompt)
+      .getResponse()
+  }
+}
+
+const StopIntentHandler = {
+  canHandle (handlerInput) {
+    const request = handlerInput.requestEnvelope.request
+    return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.StopIntent'
+  },
+  handle (handlerInput) {
+    const speechOutput = handlerInput.t('EXIT')
+    return handlerInput.responseBuilder
+      .speak(speechOutput)
+      .getResponse()
+  }
+}
+
+const CancelIntentHandler = {
+  canHandle (handlerInput) {
+    const request = handlerInput.requestEnvelope.request
+    return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.CancelIntent'
+  },
+  handle (handlerInput) {
+    const speechOutput = handlerInput.t('PROMPT_FOR_ACTION')
+    const reprompt = handlerInput.t('GENERIC_REPROMPT')
+    return handlerInput.responseBuilder
+      .speak(speechOutput)
       .reprompt(reprompt)
       .getResponse()
   }
@@ -436,8 +501,11 @@ module.exports.handler = Alexa.SkillBuilders.standard()
   .withSkillId(alexaSkillId)
   .addRequestHandlers(
     LaunchHandler,
+    HelpIntentHandler,
     YesIntentHandler,
     NoIntentHandler,
+    StopIntentHandler,
+    CancelIntentHandler,
     GetExerciseApiHandler,
     CancelStopHandler,
     EndConversationHandler,

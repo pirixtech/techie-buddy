@@ -14,17 +14,17 @@
           {
             "type": "Speech",
             "contentType": "text",
-            "content": "Which part do you feel unconfortable? You can say \"My neck hurts\" or \"My leg hurts\""
+            "content": "Which part do you feel unconfortable? You can say \"My neck hurts\" or \"My shoulder hurts\""
           },
           {
             "type": "Speech",
             "contentType": "text",
-            "content": "Where? You can say \"My neck hurts\" or \"My leg hurts\""
+            "content": "Where? You can say \"My neck hurts\" or \"My shoulder hurts\""
           },
           {
             "type": "Speech",
             "contentType": "text",
-            "content": "Where do you feel under the weather? You can say \"My neck hurts\" or \"My leg hurts\""
+            "content": "Where do you feel under the weather? You can say \"My neck hurts\" or \"My shoulder hurts\""
           }
         ]
       }
