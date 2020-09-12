@@ -23,8 +23,8 @@
             "items": [
               {
                 "type": "Speech",
-                "contentType": "text",
-                "content": "${data}",
+                "contentType": "SSML",
+                "content": "<speak><amazon:emotion name=\"excited\" intensity=\"medium\">${data}</amazon:emotion></speak>",
                 "description": "Exercise steps"
               }
             ]
@@ -42,18 +42,21 @@
   },
   "datasources": {
     "getPhysicalExerciseResult": {
-      "id": "8d385a8e-e820-4ac4-b58c-694cb0aa5766",
-      "name": "Neck Flexion and Extension",
-      "duration": 120,
+      "id": "edd366e2-db7b-4e02-97fa-8f0b919a364d",
+      "name": "Seated Neck Release",
       "bodyArea": "neck",
-      "steps": 5,
+      "duration": 120,
       "exercise": [
-        "Stand with your feet hip-width apart, toes pointing forward or turned slightly outwards, with arms by your sides. Stiffen your abdominal musclesto stabilize your spine, then depress and pull shoulders down and back without arching your low back.",
-        "Slowly drop your chin toward your chest, think of making a 'double-chin' by pressing your chin directly into your neck. Hold for 15-30 seconds and return to starting position.",
-        "Slowly bring the base of your skull toward your back, brining your chip up toward the ceiling.  Make sure to keep your shoulder relaxed, down and back. Hold for 5-10 seconds and return to starting position.",
-        "To increase the stretch during flexion, bring one hand behind your head and place your fingertips right above the base of the skull.  Apply light pressure.",
-        "To increase the stretch during extension, bring one hand up to your forehead, placing only one or two fingers on your forehead to apply a light pressure."
-      ]
+        "Sit on a chair with your feet flat on the floor. Make sure to keep your spine straight.",
+        "Place your left palm on the top of your head and inhale.",
+        "Slowly tilt your head to the left with exhalation.",
+        "Apply gentle pressure with your palm to give a deeper stretch. Hold the position for 30 seconds.",
+        "slowly lift your head up and release your hands.",
+        "Slowly tilt your head to the right with exhalation.",
+        "Apply gentle pressure with your palm to give a deeper stretch. Hold the position for 30 seconds.",
+        "slowly lift your head up and release your hands."
+      ],
+      "steps": 8
     }
   }
 }
